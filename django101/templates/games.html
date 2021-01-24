@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Games</h1>
+<ul>
+    {% for game2 in object_list %}
+        <li class="highlightable">
+            {{ game2.game_name }}
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
