@@ -6,5 +6,6 @@ urlpatterns = [
     path('', include('django102.urls')),
     path('admin/', admin.site.urls),
     path('todo/', include('todoapp.urls')),
-    path('books/', include('books.urls'))
+    path('books/', include('books.urls')),
+    path('profiles/', include('testing.urls'))
 ]
