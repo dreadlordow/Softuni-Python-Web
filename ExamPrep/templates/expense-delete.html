@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Delete Expense</h1>
+    <div class="form">
+        <form method="POST">
+                {% csrf_token %}
+            <fieldset disabled="disabled">
+                {{ form }}
+            </fieldset>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+
+{% endblock %}

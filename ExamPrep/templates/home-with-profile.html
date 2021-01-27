@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if expenses %}
+        <div>
+            <h1>Summary</h1>
+            <h1>
+                <ul class="expenses-list">
+                    <li class="blue">{{ profile.budget }}$</li>
+                    {% for expense in expenses %}
+                        <li class="red"> - {{ expense.price }}$</li>
+                    {% endfor %}
+                    {% if total >= 0 %}
+                        <li class="green">= {{ total }}$ left</li>
+                    {% else %}
+                        <li class="red">= {{ total }}$ left</li>
+                    {% endif %}
+
+                </ul>
+            </h1>
+        </div>
+    {% endif %}
+
+    <h1>My Expenses</h1>
+    <form method="get" action="{% url 'create expense' %}">
+        {% csrf_token %}
+        <button type="submit" class="button">Add Expense</button>
+    </form>
+
+    <div class="expenses-container">
+        {% for expense in expenses %}
+            <div class="expense-container">
+                <h2>{{ expense.title }}</h2>
+                <hr>
+                <img src="{{ expense.image_url }}">
+                <p>{{ expense.description }}</p>
+                <div class="expense-detail">
+                    <div>
+                        <p>Price: {{ expense.price }}$</p>
+                    </div>
+                    <div class="right">
+                        <a class="button edit" href="{% url 'edit expense' expense.pk %}">Edit</a>
+                        <a class="button delete" href="{% url 'delete expense' expense.pk %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
