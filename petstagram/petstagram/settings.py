@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'petstagram',
         'USER': 'postgres',
-        'PASSWORD': 'georgi080820112013',
+        'PASSWORD': 'georgi',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -106,10 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -129,3 +125,6 @@ STATIC_ROOT = ''
 STATICFILES_DIRS = (
     join(BASE_DIR, 'static'),
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = join(BASE_DIR, 'media')
