@@ -1,5 +1,7 @@
 from django.db import models
 
+from accounts.models import UserProfile
+
 
 class Pet(models.Model):
     DOG = 'dog'
@@ -18,6 +20,8 @@ class Pet(models.Model):
     description = models.TextField(blank=False)
     image_url = models.ImageField(blank=False, upload_to='pets')
 
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
     def __str__(self):
         return f'{self.id}; {self.name}; {self.age}'
 
@@ -25,8 +29,10 @@ class Pet(models.Model):
 class Like(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
     test = models.CharField(max_length=10)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
     text = models.TextField(blank=False)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
